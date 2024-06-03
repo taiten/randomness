@@ -45,10 +45,10 @@ func bootWorker(source io.Reader, n int, round func([]byte) []*randomness.TestRe
 	return jobs, &wait
 }
 
-// FactoryDetectFast 出厂检测，15种检测，每组 10^6比特，分50组
+// FactoryDetectFast 出厂检测，15种检测，每组 10^6比特，分1000组
 // source: 随机源
 func FactoryDetectFast(source io.Reader) (bool, error) {
-	s := 50
+	s := 1000
 	t := Threshold(s)
 	n := 1000_000 / 8
 	counters := make([]int32, 15)
@@ -75,10 +75,10 @@ func FactoryDetectFast(source io.Reader) (bool, error) {
 	return true, nil
 }
 
-// PowerOnDetectFast 上电自检，15种检测，每组 10^6比特，分20组
+// PowerOnDetectFast 上电自检，15种检测，每组 10^6比特，分1000组
 // source: 随机源
 func PowerOnDetectFast(source io.Reader) (bool, error) {
-	s := 20
+	s := 1000
 	t := Threshold(s)
 	n := 1000_000 / 8
 	counters := make([]int32, 15)
